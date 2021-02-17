@@ -13,5 +13,5 @@ runs:
   steps:
       - run: dotnet restore ${{inputs.project-file}} --packages ../../packages --no-cache --source https://api.nuget.org/v3/index.json --source https://www.myget.org/F/grocerkey-feed/auth/${{inputs.myget-token}}/api/v3/index.json
         shell: powershell      
-      - run: msbuild.exe  ${{inputs.project-file}} /p:OutDir= ${{inputs.output-directory}} /p:Configuration= ${{inputs.build-configuration}}
+      - run: msbuild.exe  ${{inputs.project-file}} //p:OutDir= ${{inputs.output-directory}} //p:Configuration= ${{inputs.build-configuration}}
         shell: powershell
