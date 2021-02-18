@@ -15,5 +15,5 @@ runs:
         shell: powershell
       - run: echo "msbuild.exe ${{inputs.project-file}} /p:OutDir= ${{inputs.output-directory}} /p:Configuration= ${{inputs.build-configuration}}"
         shell: powershell
-      - run: msbuild.exe ${{inputs.project-file}} /p:OutDir= ${{inputs.output-directory}} /p:Configuration= ${{inputs.build-configuration}}
+      - run: msbuild.exe "${{inputs.project-file}}" /p:OutDir= "${{inputs.output-directory}}" /p:Configuration= ${{inputs.build-configuration}}
         shell: powershell
