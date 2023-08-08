@@ -6,13 +6,14 @@ inputs:
     required: true
   build-configuration:
     required: true
-  github-creds:
+  github-token:
     required: true
     
 runs:
   using: "composite"
   steps:
-      - run: dotnet nuget add source --username suleman-ppup --password ${{ inputs.github-creds }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/GrocerKey/index.json"
+      - run: dotnet nuget add source --username nobody --password ${{ inputs.github-token }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/GrocerKey/index.json"
+        # While using Github PAT, username does not matter
         shell: powershell
       - run: dotnet restore ${{inputs.project-file}} --packages ../../packages --no-cache --source https://api.nuget.org/v3/index.json --source https://nuget.pkg.github.com/GrocerKey/index.json
         shell: powershell
